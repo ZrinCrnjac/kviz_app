@@ -1,0 +1,2 @@
+cd c:\xampp\mysql\bin
+mysql -uZrin -pZrin --default_character_set=utf8 < "C:\xampp\htdocs\kviz_app\baza.sql"
