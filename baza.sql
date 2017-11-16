@@ -32,13 +32,6 @@ create table pitanje(
 	kviz_id int not null
 );
 
-create table odgovor(
-	odgovor char(2) not null,
-	ekipa_id int not null,
-	pitanje_id int not null,
-	primary key(ekipa_id, pitanje_id)
-);
-
 create table ekipa_kviz(
 	ekipa_id int not null,
 	kviz_id int not null,
@@ -50,10 +43,6 @@ alter table kviz add foreign key (voditelj_id) references voditelj(voditelj_id);
 alter table pitanje add foreign key (kategorija_id) references kategorija(kategorija_id);
 
 alter table pitanje add foreign key (kviz_id) references kviz(kviz_id);
-
-alter table odgovor add foreign key (ekipa_id) references ekipa(ekipa_id);
-
-alter table odgovor add foreign key (pitanje_id) references pitanje(pitanje_id);
 
 alter table ekipa_kviz add foreign key (ekipa_id) references ekipa(ekipa_id);
 

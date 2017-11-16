@@ -14,7 +14,7 @@
       	<li><a href="<?php echo $putanjaAPP;  ?>index.php">Početna</a></li>
       	<?php if(isset($_SESSION['logiran'])): ?>
             <li><a href="<?php echo $putanjaAPP;  ?>privatno/ekipe/index.php">Ekipe</a></li>
-            <li><a href="<?php echo $putanjaAPP;  ?>privatno/rezultati/index.php">Rezultati</a></li>
+            <li><a href="<?php echo $putanjaAPP;  ?>privatno/rezultati/index.php">Dolaznost</a></li>
         <?php endif; ?>
       	<li><a href="<?php echo $putanjaAPP;  ?>javno/kvizovi/index.php">Kvizovi</a></li>
       	<li><a href="<?php echo $putanjaAPP;  ?>javno/onama.php">O nama</a></li>
@@ -24,6 +24,9 @@
  </div>
  	<div class="top-bar-right">
  		<ul class="dropdown menu" data-dropdown-menu>
+ 		<?php if(isset($_SESSION['logiran'])): ?>
+ 		<li><a href="<?php echo $putanjaAPP;  ?>privatno/novi/index.php" class="success button expanded">Dodaj voditelja</a></li>
+ 		<?php endif; ?>
    		<li><?php if(!isset($_SESSION["logiran"])): ?>
       	<a href="<?php echo $putanjaAPP;  ?>javno/login.php" class="button expanded">Login</a>
       	<?php else: ?>

@@ -1,4 +1,6 @@
-<?php include_once '../../konfiguracija.php'; ?>
+<?php include_once '../../konfiguracija.php';
+$uvjet = isset($_GET["uvjet"]) ? $_GET["uvjet"] : "";
+?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
@@ -11,10 +13,15 @@
 					<div class="row">
 						<div class="large-6 columns">
 							<form method="GET">
-								<input type="text" placeholder="Ime ekipe" name="uvjet">
+								<input type="text" placeholder="Ime ekipe" name="uvjet" value="<?php echo $uvjet; ?>">
 							</form>
 						</div>
                         <div class="large-6 columns">
+                        	<?php
+								$uvjetUpit="%" . $uvjet . "%";
+								$izraz=$veza->prepare("select naziv from ekipa where naziv like :uvjet");
+								$izraz->execute(array("uvjet"=>$uvjetUpit));
+								?>
                             <a href="dodaj.php">
                                 <button type="submit" class="success button expanded">Dodaj</button>
                             </a>
@@ -35,8 +42,8 @@
 						</thead>
 						<tbody>
 							<?php
-							$izraz = $veza->prepare("select ekipa_id, naziv, br_clanova from ekipa");
-							$izraz->execute();
+							$izraz = $veza->prepare("select * from ekipa where naziv like :uvjet");
+							$izraz->execute(array("uvjet"=>$uvjetUpit));
 							$red=$izraz->fetchAll();
 							foreach($red as $a) {
 							?>

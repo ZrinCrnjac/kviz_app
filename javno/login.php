@@ -27,6 +27,9 @@
 							<input type="password" name="lozinka" id="lozinka" />
 							<input type="submit" class="button expanded" value="Autoriziraj" />
 						</form>
+			<div class="callout">
+				User: Tomo<br>Pw: e
+			</div>
 			</div>
 		</div>
 	<?php	include_once '../predlosci/foot.php'; ?>
